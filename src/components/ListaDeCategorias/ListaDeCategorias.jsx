@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import "./estilo.css";
+import "./estilo.css"
 
 class ListaDeCategorias extends Component {
     _handleEventoInput(e){
         if(e.key === "Enter"){
-            this.props.adicionarCategoria(e.target.value);
-            e.target.value = "";
+            let valorCategoria = e.target.value;
+            this.props.adicionarCategoria(valorCategoria);
         }
     }
     render() {
         return(
             <section className="lista-categorias">
                 <ul className="lista-categorias_lista">
-                    <li className="lista-categorias_item">Categoria 1</li>
-                    <li className="lista-categorias_item">Categoria 1</li>
-                    <li className="lista-categorias_item">Categoria 1</li>
-                    <li className="lista-categorias_item">Categoria 1</li>
+                    {this.props.categorias.map((categoria, index) => {
+                        return <li key={index} className="lista-categorias_item">{categoria}</li>
+                    })}
                 </ul>
                 <input 
                 className="lista-categorias_input" 
